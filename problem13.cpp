@@ -4,7 +4,6 @@ using namespace std;
 #include <vector>
 
 
-
 class Solution {
 private:
     vector<pair<char, int>> v = {{'I', 1}, {'V', 5}, {'X', 10}, {'L', 50},
