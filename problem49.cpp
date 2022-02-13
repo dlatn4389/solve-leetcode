@@ -1,26 +1,23 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
-#include <set>
 #include <unordered_map>
 using namespace std;
 
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        set<string> keys;
         unordered_map<string, vector<string>> um;
 
         for (string str: strs) {
             string temp = str;
             sort(temp.begin(), temp.end());
-            keys.insert(temp);
             um[temp].push_back(str);
         }
 
         vector<vector<string>> ans;
-        for (auto iter=keys.begin(); iter!=keys.end(); iter++) {
-            ans.push_back(um[*iter]);
+        for (auto i: um) {
+            ans.push_back(i.second);
         }
         return ans;
     }
