@@ -7,27 +7,15 @@ class Solution {
 public:
     void rotate(vector<vector<int>>& matrix) {
         int size = matrix.size();
-        int start = 0;
-
-        while (size>1) {
-            for (int i=0; i<size-1; i++) {
-                int value = matrix[start][start];
-                for (int row=start; row<start+size-1; row++) {
-                    matrix[row][start] = matrix[row+1][start];
-                }
-                for (int col=start; col<start+size-1; col++) {
-                    matrix[start+size-1][col] = matrix[start+size-1][col+1];
-                }
-                for (int row=start+size-1; row>start; row--) {
-                    matrix[row][start+size-1] = matrix[row-1][start+size-1];
-                }
-                for (int col=start+size-1; col>start; col--) {
-                    matrix[start][col] = matrix[start][col-1];
-                }
-                matrix[start][start+1] = value;
+        for (int i=0; i<size/2; i++) {
+            for (int j=0; j<size; j++) {
+                swap(matrix[size-1-i][j], matrix[i][j]);
             }
-            start++;
-            size -= 2;
+        }
+        for (int i=0; i<size; i++) {
+            for (int j=i+1; j<size; j++) {
+                swap(matrix[i][j], matrix[j][i]);
+            }
         }
     }
 };
